@@ -3,7 +3,7 @@
 > **Smart Grievance Redressal & Fake Complaint Detection System**  
 > A high-trust municipal civic grievance management platform featuring automated duplicate clustering, image forensics (ELA), trust scoring, and SLA-driven routing.
 
-[![CI](https://github.com/Surajsharma0804/Smart-grievance-portal-with-fake-complaint-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/Surajsharma0804/Smart-grievance-portal-with-fake-complaint-detection/actions)
+[![CI](https://github.com/Verto01/Smart-grievance-portal-with-fake-complaint-detection/actions/workflows/ci.yml/badge.svg)](https://github.com/Verto01/Smart-grievance-portal-with-fake-complaint-detection/actions)
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![TypeScript Strict](https://img.shields.io/badge/TypeScript-Strict-blue)](https://www.typescriptlang.org/)
 [![Node Version](https://img.shields.io/badge/node-%3E%3D20.0.0-brightgreen)](https://nodejs.org)
@@ -127,7 +127,7 @@ Detailed test breakdowns are saved in [docs/evaluation.md](docs/evaluation.md).
 ### 1. Installation
 
 ```bash
-git clone https://github.com/Surajsharma0804/Smart-grievance-portal-with-fake-complaint-detection.git
+git clone https://github.com/Verto01/Smart-grievance-portal-with-fake-complaint-detection.git
 cd Smart-grievance-portal-with-fake-complaint-detection
 npm install
 ```

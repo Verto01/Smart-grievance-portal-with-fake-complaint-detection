@@ -44,7 +44,7 @@ This option requires zero infrastructure maintenance and can run on free or low-
 
 ### Step 2: Deploy Backend API to Render
 1. Go to [Render Dashboard](https://dashboard.render.com/) and click **New > Web Service**.
-2. Connect your GitHub repository: `https://github.com/Surajsharma0804/Smart-grievance-portal-with-fake-complaint-detection`.
+2. Connect your GitHub repository: `https://github.com/Verto01/Smart-grievance-portal-with-fake-complaint-detection`.
 3. Configure the service:
    - **Name:** `nagrik-setu-api`
    - **Environment:** `Node`
@@ -99,7 +99,7 @@ sudo usermod -aG docker $USER
 
 ### Step 2: Clone & Configure
 ```bash
-git clone https://github.com/Surajsharma0804/Smart-grievance-portal-with-fake-complaint-detection.git
+git clone https://github.com/Verto01/Smart-grievance-portal-with-fake-complaint-detection.git
 cd "Smart-grievance-portal-with-fake-complaint-detection"
 
 # Copy environment template
