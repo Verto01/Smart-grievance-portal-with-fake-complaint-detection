@@ -38,3 +38,32 @@ describe('loadConfig', () => {
     }
   });
 });
+
+describe('RUN_WORKER configuration', () => {
+  it.each([
+    { value: 'true', expected: true },
+    { value: 'false', expected: false },
+    { value: '1', expected: true },
+    { value: '0', expected: false },
+  ])('parses $value as $expected', ({ value, expected }) => {
+    const config = loadConfig({
+      ...validEnv,
+      RUN_WORKER: value,
+    });
+
+    expect(config.RUN_WORKER).toBe(expected);
+  });
+
+  it('disables the worker by default', () => {
+    expect(loadConfig(validEnv).RUN_WORKER).toBe(false);
+  });
+
+  it.each(['invalid', '', 'yes'])(
+    'rejects invalid worker value "%s"',
+    (value) => {
+      expect(() =>
+        loadConfig({ ...validEnv, RUN_WORKER: value })
+      ).toThrow('RUN_WORKER');
+    }
+  );
+});

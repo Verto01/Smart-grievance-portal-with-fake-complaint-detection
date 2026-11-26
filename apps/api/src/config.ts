@@ -26,7 +26,10 @@ const envSchema = z.object({
   AI_API_KEY: z.string().optional(),
   EMBEDDING_PROVIDER: z.enum(['mock', 'clip', 'remote', 'caption']).default('mock'),
 
-  RUN_WORKER: z.coerce.boolean().default(true),
+RUN_WORKER: z
+  .enum(['true', 'false', '1', '0'])
+  .default('false')
+  .transform((value) => value === 'true' || value === '1'),
 
   DUP_RADIUS_M: z.coerce.number().default(Defaults.DUP_RADIUS_M),
   DUP_WINDOW_DAYS: z.coerce.number().default(Defaults.DUP_WINDOW_DAYS),
