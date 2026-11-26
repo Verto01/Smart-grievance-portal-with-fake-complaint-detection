@@ -1,8 +1,7 @@
 import { describe, it, expect, beforeAll, afterAll, beforeEach } from 'vitest';
 import { MongoMemoryServer } from 'mongodb-memory-server';
 import mongoose from 'mongoose';
-import { seed, findWardForPoint, Department, Category, Ward } from '../../src/index.js';
-
+import { seed, seedDemoUsers, findWardForPoint, Department, Category, Ward, User } from '../../src/index.js';
 let mongod: MongoMemoryServer;
 
 beforeAll(async () => {
@@ -54,7 +53,36 @@ describe('seed', () => {
     expect(cat!.label.en).toBe('Sanitation');
     expect(cat!.label.hi).toBe('स्वच्छता');
   });
+
+  it('does not create demo users during master data seeding', async () => {
+  await seed();
+
+  expect(await User.countDocuments()).toBe(0);
 });
+
+it('preserves existing passwords during repeated seeding', async () => {
+  await seed();
+  await seedDemoUsers();
+
+  const user = await User.findOne({
+    email: 'officer@test.com',
+  }).select('+passwordHash');
+
+  expect(user).not.toBeNull();
+
+  const originalHash = user!.passwordHash;
+
+  await seed();
+  await seedDemoUsers();
+
+  const updatedUser = await User.findById(user!._id)
+    .select('+passwordHash');
+
+  expect(updatedUser!.passwordHash).toBe(originalHash);
+});
+
+});
+
 
 describe('findWardForPoint', () => {
   beforeEach(async () => {

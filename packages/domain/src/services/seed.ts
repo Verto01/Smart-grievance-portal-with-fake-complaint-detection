@@ -124,8 +124,6 @@ export async function seed() {
 
   await Ward.ensureIndexes();
 
-  await seedDemoUsers();
-
   return {
     departments: DEPARTMENTS.length,
     categories: CATEGORIES.length,
@@ -178,10 +176,10 @@ export async function seedDemoUsers() {
     if (!existing) {
       await User.create(u);
     } else {
-      existing.passwordHash = passwordHash;
       if (u.departmentId && !existing.departmentId) existing.departmentId = u.departmentId;
       if (u.wardIds && (!existing.wardIds || existing.wardIds.length === 0)) existing.wardIds = u.wardIds;
       await existing.save();
     }
   }
 }
+

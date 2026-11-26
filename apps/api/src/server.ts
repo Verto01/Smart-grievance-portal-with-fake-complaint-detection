@@ -18,7 +18,7 @@ async function main() {
   try {
     const { seed } = await import('@nagrik-setu/domain');
     const seedResult = await seed();
-    console.log('Master data and staff accounts initialized:', seedResult);
+    console.log('Master data initialized:', seedResult);
   } catch (err) {
     console.warn('Master data auto-seed notice:', err);
   }
