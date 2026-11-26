@@ -46,3 +46,13 @@ describe('error format', () => {
     expect(res.body.error.requestId.length).toBeGreaterThan(0);
   });
 });
+
+describe('POST /health/seed', () => {
+  it('does not expose database seeding publicly', async () => {
+    const res = await request(app).post('/health/seed');
+
+    expect(res.status).toBe(404);
+    expect(res.body.error.code).toBe('NOT_FOUND');
+  });
+});
+

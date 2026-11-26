@@ -18,16 +18,6 @@ healthRouter.get('/ready', (_req: Request, res: Response) => {
   }
 });
 
-healthRouter.post('/health/seed', async (_req: Request, res: Response) => {
-  try {
-    const { seed } = await import('@nagrik-setu/domain');
-    const result = await seed();
-    res.json({ ok: true, result });
-  } catch (err: any) {
-    res.status(500).json({ ok: false, error: err?.message || 'Seed failed' });
-  }
-});
-
 /**
  * GET /public/stats
  * Public (no-auth) analytics endpoint for the citizen-facing stats page.
